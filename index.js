@@ -34,3 +34,31 @@ fetch('https://pokeapi.co/api/v2/pokemon/')
 .then((data) => data.results.forEach(element => console.log(element.name)))
 .catch((error) => console.log(error))
 ;
+
+// async await + map()
+const requestInfo = async() => {
+  try {
+  const res = await fetch('https://pokeapi.co/api/v2/pokemon/')
+  const data = await res.json()
+  const arrayNames = data.results.map(pokemon => pokemon.name)
+  console.log(arrayNames)
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+//requestInfo()
+
+// filter()
+const requestInfoFilter = async() => {
+  try {
+  const res = await fetch('https://pokeapi.co/api/v2/pokemon/')
+  const data = await res.json()
+  const arrayNamesFilter = data.results.filter(pokemon => pokemon.name === 'blastoise')
+  console.log(arrayNamesFilter)
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+requestInfoFilter()
